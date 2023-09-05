@@ -1,0 +1,27 @@
+---
+- name: Systemctl Stop
+  command: systemctl stop containerd
+
+- name: RM
+  command: rm /etc/containerd/config.toml 
+
+- name: Get from github
+  command: wget https://github.com/containerd/containerd/releases/download/v1.6.12/containerd-1.6.12-linux-amd64.tar.gz 
+
+- name: Tar Containerd
+  command: tar xvf containerd-1.6.12-linux-amd64.tar.gz 
+
+- name: systemctl start containerd
+  command: systemctl start containerd
+
+- name: apt-get update
+  command: apt-get update
+
+- name: Copy join to nodes
+  copy:
+    dest: /opt/kubejoin.sh
+    src: ./join/kubejoin.sh
+    mode: "0700"
+
+- name: Run command on remote
+  shell: /opt/kubejoin.sh
