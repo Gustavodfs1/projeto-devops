@@ -3,7 +3,7 @@
 ## Arquitetura
 ________________
 
-<br><img alt="Arquitetura do projeto" width="70%" src="./assets/arquitetura.png"><br><br>
+<br><img alt="Arquitetura do projeto" width="70%" src="./assets/arquitetura-devops.png"><br><br>
 
  3 instâncias de EC2 - AWS (1 Master, 2 Workers) configuradas por Terraform, com security group e um keypair. O estado da infrastrutura (TF.state) é armazenado em um bucket S3, 
  para que possa ser centralizado e compartilhado com os demais usuários da infra.
